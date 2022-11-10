@@ -1,0 +1,50 @@
+.alert{
+    position: fixed;
+    display: inline-block;
+    width: 500px;
+    font-weight: $btn-font-weight;
+    line-height: $btn-line-height;
+    color: $white;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: $alert-border-width solid transparent;
+    padding: $alert-padding-y $alert-padding-x;
+    margin-bottom: $alert-margin-bottom;
+    border-radius: $alert-border-radius;
+    top:20px;
+    left: calc( 50% - 250px );
+    background-color: $white;
+    box-shadow: $box-shadow-lg;
+    .content{
+        // background-color: $info;
+        border-radius: $alert-border-radius;
+        padding: $alert-padding-y $alert-padding-x;
+        .closeBtn{
+            float: right;
+        }
+        .title{
+            font-weight: $alert-title-font-weight;
+        }
+        .description{
+            font-size: $alert-description-font-size;
+            margin-top: $alert-description-top-margin;
+        }
+    }
+}
+.alert-success{
+    background-color: $success;
+}
+.alert-danger{
+    background-color: $danger;
+}
+.alert-warning{
+    background-color: $warning;
+}
+.alert-default{
+    background-color: $success;
+}
+
+
+
+
