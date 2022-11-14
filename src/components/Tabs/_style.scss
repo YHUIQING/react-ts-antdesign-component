@@ -1,0 +1,21 @@
+.tabs-content{
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    margin: 50px;
+    box-shadow: 2px 2px 10px #ccc;
+    .aimme-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        border-bottom: $menu-border-width solid $menu-border-color;
+        box-shadow: $menu-box-shadow;
+        .tabs-item{
+            padding: 10px 20px;
+            background: #fff;
+            &.is-active, &:hover {
+                color: $menu-item-active-color;
+                border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+            }
+        }
+    }
+}

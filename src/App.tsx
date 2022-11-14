@@ -5,11 +5,15 @@ import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
 import SubMenu from './components/Menu/subMenu';
 import Icon from './components/Icon/icon';
+import Tabs from './components/Tabs/tabs';
+// import TabItem from './components/Tabs/TabItem';
+import TabItem from './components/Tabs/TabItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas);
+
 
 function App() {
   const [visible, setVisible] = useState<boolean>(false);
@@ -22,10 +26,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Tabs>
+          <TabItem label = 'item_1'>item_content_1</TabItem>
+          <TabItem label = 'item_2'>item_content_2</TabItem>
+        </Tabs>
         <Icon theme='danger' icon = 'coffee'/>
         
         <FontAwesomeIcon icon={faCoffee} size='lg'/>
-      <Menu defaultIndex={'0' } 
+        <Menu defaultIndex={'0' } 
           defaultOpenSubMenus = {['3']}
           // mode = "vertical"
           onSelect = {(index:string) => {
