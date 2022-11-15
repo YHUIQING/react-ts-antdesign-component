@@ -12,10 +12,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import Input from './components/Input/input';
 library.add(fas);
 
 
 function App() {
+  /******* alert 开始 ********/
   const [visible, setVisible] = useState<boolean>(false);
   const show = () => {
     setVisible(true);
@@ -23,16 +25,54 @@ function App() {
   const close = () => {
     setVisible(false);
   }
+  /******* alert 结束 ********/
+
+  /********input 开始 ********/
+  const [inputValue, setInputValue] = useState('');
+  /********input 结束 ********/
+
+
+
   return (
     <div className="App">
       <header className="App-header">
+        <Input icon = 'search' placeholder='search'/>
+        <Input prepend = 'https://'  append = '.com' placeholder='前后缀'/>
+        <Input prepend = 'https://'  append = '.com' disabled placeholder='disabled'/>
+        <Input 
+          defaultValue={inputValue}
+          placeholder='受控input' 
+          value = {inputValue} 
+          onChange = {(e)=>{
+            setInputValue(e.target.value)
+          }}
+        />
+
+
+
+
+
+
+
+
+
+
         <Tabs>
           <TabItem label = 'item_1'>item_content_1</TabItem>
           <TabItem label = 'item_2'>item_content_2</TabItem>
         </Tabs>
+
+
+
+
+
         <Icon theme='danger' icon = 'coffee'/>
-        
         <FontAwesomeIcon icon={faCoffee} size='lg'/>
+
+
+
+
+
         <Menu defaultIndex={'0' } 
           defaultOpenSubMenus = {['3']}
           // mode = "vertical"
