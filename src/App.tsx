@@ -13,6 +13,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import Input from './components/Input/input';
+import AutoComplete from './components/AutoComplete/autoComplete';
 library.add(fas);
 
 
@@ -32,10 +33,43 @@ function App() {
   /********input 结束 ********/
 
 
+  /*********AutoComplete start **/
+  const optionArray = ['asd','add','about','baba','bank','cool'];
+  const fetchSuggestions = (value: string) => {
+    console.log(123,value,);
+    return optionArray.filter((item:string)=>item.includes(value));
+  }
+
+  const handleFetch = (value: string) => {
+    return fetch(`https://api.github.com/search/users?q=${value}`)
+    .then((data)=> data.json())
+    .then(({items})=>{
+      const formatItems = items.slice(0,20).map((item:any)=>{
+        return item.login
+      })
+      return formatItems
+    })
+  }
+  /*********AutoComplete end ****/
+
+
 
   return (
     <div className="App">
       <header className="App-header">
+
+
+      <AutoComplete 
+        onSelect={(value)=>{ console.log('----value----',value)}}
+        // value={'123'} 
+        fetchSuggestions = {handleFetch}
+      />
+
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+
         <Input icon = 'search' placeholder='search'/>
         <Input prepend = 'https://'  append = '.com' placeholder='前后缀'/>
         <Input prepend = 'https://'  append = '.com' disabled placeholder='disabled'/>

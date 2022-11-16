@@ -39,7 +39,6 @@ export const Input:React.FC<InputProps> = (props) => {
         }
         return value.trim();
     }
-    console.log(restProps);
     if('vaule' in restProps){
         delete restProps.defaultValue
         restProps.value =  formatInput(restProps.value);
