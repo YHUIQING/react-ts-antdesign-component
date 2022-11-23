@@ -14,6 +14,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import Input from './components/Input/input';
 import AutoComplete from './components/AutoComplete/autoComplete';
+import Upload, { UploadFile } from './components/Upload/upload';
 library.add(fas);
 
 
@@ -53,12 +54,59 @@ function App() {
   /*********AutoComplete end ****/
 
 
+  /*********upload start ****/
+  const checkFileSize = (file: File) => {
+    if(Math.round(file.size / 1024) > 50){
+      alert('file too big');
+      return false;
+    }
+    return true;
+  }
+
+  const filePromise = (file: File) => {
+    const newFile = new File([file],'new_name.docx',{type:file.type});
+    return Promise.resolve(newFile);
+  }
+
+  const defaultFileList:UploadFile[]= [
+    { uid:'123', size:1234, name:'hello.md', status:'uploading', percent:40},
+    { uid:'122', size:1234, name:'xyz.md', status:'success', percent:40},
+    { uid:'121', size:1234, name:'eyhf.md', status:'error', percent:40},
+  ]
+  /*********upload end ****/
+
+
 
   return (
     <div className="App">
       <header className="App-header">
-
-
+      <Upload 
+        defaultFileList = {defaultFileList}
+        action='http://jsonplaceholder.typicode.com/posts/1'
+        onChange={(file:File)=>{
+          console.log(file);
+          
+        }}
+        beforeUpload={checkFileSize}
+      >
+        <Button btnType={ButtonType.Primary}> 拖拽 </Button>
+      </Upload>
+      <Upload 
+        defaultFileList = {defaultFileList}
+        action='http://jsonplaceholder.typicode.com/posts/1'
+        onChange={(file:File)=>{
+          console.log(file);
+          
+        }}
+        drag
+        beforeUpload={checkFileSize}
+      >
+        <Button btnType={ButtonType.Primary}> 拖拽 </Button>
+      </Upload>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
       <AutoComplete 
         onSelect={(value)=>{ console.log('----value----',value)}}
         // value={'123'} 
